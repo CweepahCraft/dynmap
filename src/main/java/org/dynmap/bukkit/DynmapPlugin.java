@@ -302,6 +302,7 @@ public class DynmapPlugin extends JavaPlugin implements DynmapAPI {
                     pm.registerEvents(new Listener() {
                         @EventHandler(priority=EventPriority.MONITOR, ignoreCancelled=true)
                         public void onPlayerChat(AsyncPlayerChatEvent evt) {
+                            if (!evt.getRecipients().containsAll(Bukkit.getOnlinePlayers())) return;
                             final Player p = evt.getPlayer();
                             final String msg = evt.getMessage();
                             getServer().getScheduler().scheduleSyncDelayedTask(DynmapPlugin.this, new Runnable() {
